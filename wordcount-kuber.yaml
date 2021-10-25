@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordcount-deployment
+  labels:
+    app: wordcount
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wordcount
+  template:
+    metadata:
+      labels:
+        app: wordcount
+    spec:
+      containers:
+        - name: wordcount
+          image: YOUR_REPO/wordcount:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
